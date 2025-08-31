@@ -8,9 +8,7 @@ import cc.dreamcode.platform.DreamVersion;
 import cc.dreamcode.platform.bukkit.DreamBukkitConfig;
 import cc.dreamcode.platform.bukkit.DreamBukkitPlatform;
 import cc.dreamcode.platform.bukkit.component.ConfigurationResolver;
-import cc.dreamcode.platform.bukkit.serializer.InstantSerializer;
 import cc.dreamcode.platform.bukkit.serializer.ItemMetaSerializer;
-import cc.dreamcode.platform.bukkit.serializer.ItemStackSerializer;
 import cc.dreamcode.platform.component.ComponentService;
 import cc.dreamcode.platform.other.component.DreamCommandExtension;
 import cc.dreamcode.platform.persistence.DreamPersistence;
@@ -30,7 +28,10 @@ import cc.dreamcode.utilities.adventure.AdventureProcessor;
 import cc.dreamcode.utilities.adventure.AdventureUtil;
 import cc.dreamcode.utilities.bukkit.StringColorUtil;
 import eu.okaeri.configs.serdes.OkaeriSerdesPack;
+import eu.okaeri.configs.serdes.commons.serializer.InstantSerializer;
 import eu.okaeri.configs.yaml.bukkit.serdes.SerdesBukkit;
+import eu.okaeri.configs.yaml.bukkit.serdes.itemstack.ItemStackFailsafe;
+import eu.okaeri.configs.yaml.bukkit.serdes.serializer.ItemStackSerializer;
 import eu.okaeri.persistence.document.DocumentPersistence;
 import eu.okaeri.tasker.bukkit.BukkitTasker;
 import lombok.Getter;
@@ -105,7 +106,7 @@ public final class TemplatePlugin extends DreamBukkitPlatform implements DreamBu
             registry.register(new BukkitNoticeSerializer());
             registry.register(new MenuBuilderSerializer());
 
-            registry.registerExclusive(ItemStack.class, new ItemStackSerializer());
+            registry.registerExclusive(ItemStack.class, new ItemStackSerializer(ItemStackFailsafe.BUKKIT));
             registry.registerExclusive(ItemMeta.class, new ItemMetaSerializer());
             registry.registerExclusive(Instant.class, new InstantSerializer(false));
         };
@@ -116,7 +117,7 @@ public final class TemplatePlugin extends DreamBukkitPlatform implements DreamBu
         return registry -> {
             registry.register(new SerdesBukkit());
 
-            registry.registerExclusive(ItemStack.class, new ItemStackSerializer());
+            registry.registerExclusive(ItemStack.class, new ItemStackSerializer(ItemStackFailsafe.BUKKIT));
             registry.registerExclusive(ItemMeta.class, new ItemMetaSerializer());
             registry.registerExclusive(Instant.class, new InstantSerializer(false));
         };
