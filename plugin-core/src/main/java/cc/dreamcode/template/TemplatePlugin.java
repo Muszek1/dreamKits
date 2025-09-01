@@ -117,7 +117,7 @@ public final class TemplatePlugin extends DreamBukkitPlatform implements DreamBu
         return registry -> {
             registry.register(new SerdesBukkit());
 
-            registry.registerExclusive(ItemStack.class, new ItemStackSerializer(ItemStackFailsafe.BUKKIT));
+            registry.registerExclusive(ItemStack.class, new ItemStackSerializer(ItemStackFailsafe.BASE64));
             registry.registerExclusive(ItemMeta.class, new ItemMetaSerializer());
             registry.registerExclusive(Instant.class, new InstantSerializer(false));
         };
