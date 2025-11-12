@@ -5,7 +5,7 @@ Take a loot at [Dream-Otchlan](https://github.com/DreamPoland/dream-otchlan), ex
 **Required:**
 -----
 - Spigot-api 1.8.8 with NMS support.
-- JDK 21, target 1.8 for compatibility.
+- JDK 25, target 1.8 for compatibility.
 
 ------
 

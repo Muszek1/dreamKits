@@ -1,12 +1,12 @@
 plugins {
     `java-library`
     id("idea")
-    id("com.gradleup.shadow") version "9.0.0-beta17"
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.17" apply false
+    id("com.gradleup.shadow") version "9.2.2"
+    id("io.papermc.paperweight.userdev") version "2.0.0-beta.19" apply false
 }
 
 idea {
-    project.jdkName = "23"
+    project.jdkName = "25"
 }
 
 allprojects {
@@ -39,7 +39,7 @@ subprojects {
 
     dependencies {
         /* General */
-        val lombok = "1.18.38"
+        val lombok = "1.18.42"
         compileOnly("org.projectlombok:lombok:$lombok")
         annotationProcessor("org.projectlombok:lombok:$lombok")
         testCompileOnly("org.projectlombok:lombok:$lombok")

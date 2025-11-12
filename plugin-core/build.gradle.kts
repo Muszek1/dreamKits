@@ -2,15 +2,14 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import com.github.jengelman.gradle.plugins.shadow.transformers.PropertiesFileTransformer
 
 repositories {
-    maven("https://repo.codemc.io/repository/nms")
-    maven("https://repo.codemc.io/repository/maven-public")
-    maven("https://oss.sonatype.org/content/repositories/snapshots")
+    maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://maven.reposilite.com/maven-central")
 }
 
 dependencies {
     // -- bukkit-versions --
-    project(":plugin-core:nms").dependencyProject.subprojects.forEach {
-        implementation(it)
+    rootProject.project(":plugin-core:nms").subprojects.forEach {
+        api(it)
     }
 
     // -- spigot api -- (base)
