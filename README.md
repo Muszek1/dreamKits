@@ -1,6 +1,6 @@
 Working with template:
 -----
-Take a loot at [Dream-Otchlan](https://github.com/DreamPoland/dream-otchlan), example project based on platform.
+Documentation [here](https://github.com/DreamPoland/dream-platform/wiki), example project [here](https://github.com/DreamPoland/dream-otchlan).
 
 **Required:**
 -----
