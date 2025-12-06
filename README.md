@@ -1,6 +1,6 @@
 Working with template:
 -----
-Documentation [here](https://github.com/DreamPoland/dream-platform/wiki), example project [here](https://github.com/DreamPoland/dream-otchlan).
+Documentation [here](https://github.com/DreamPoland/dream-platform/wiki), example project [here](https://github.com/DreamPoland/dream-platform/tree/master/bukkit-example/src/main/java/cc/dreamcode/project).
 
 **Required:**
 -----
