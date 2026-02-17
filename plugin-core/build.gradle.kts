@@ -8,9 +8,9 @@ repositories {
 
 dependencies {
     // -- bukkit-versions --
-    rootProject.project(":plugin-core:nms").subprojects.forEach {
-        api(it)
-    }
+//    rootProject.project(":plugin-core:nms").subprojects.forEach {
+   //     api(it)
+  //  }
 
     // -- spigot api -- (base)
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
@@ -42,7 +42,7 @@ dependencies {
 
 tasks.withType<ShadowJar> {
 
-    archiveFileName.set("Dream-Template-${project.version}.jar")
+    archiveFileName.set("DreamKits-${project.version}.jar")
     mergeServiceFiles()
 
     relocate("com.cryptomorin", "cc.dreamcode.template.libs.com.cryptomorin")
@@ -62,11 +62,11 @@ tasks.withType<ShadowJar> {
     relocate("org.json", "cc.dreamcode.template.libs.org.json")
     relocate("com.google.gson", "cc.dreamcode.template.libs.com.google.gson")
 
-    minimize {
-        parent!!.project(":plugin-core:nms").subprojects.forEach {
-            exclude(project(it.path))
-        }
-    }
+//    minimize {
+//        parent!!.project(":plugin-core:nms").subprojects.forEach {
+  //          exclude(project(it.path))
+  //      }
+  //  }
 
     transform(PropertiesFileTransformer::class.java) {
         paths.set(listOf("META-INF/native-image/org.mongodb/bson/native-image.properties"))

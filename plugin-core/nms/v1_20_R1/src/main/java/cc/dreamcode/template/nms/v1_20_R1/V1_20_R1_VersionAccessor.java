@@ -1,6 +1,6 @@
-package cc.dreamcode.template.nms.v1_20_R1;
+package cc.dreamcode.kits.nms.v1_20_R1;
 
-import cc.dreamcode.template.nms.api.VersionAccessor;
+import cc.dreamcode.kits.nms.api.VersionAccessor;
 
 public class V1_20_R1_VersionAccessor implements VersionAccessor {
 

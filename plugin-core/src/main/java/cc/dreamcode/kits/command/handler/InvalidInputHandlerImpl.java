@@ -1,9 +1,9 @@
-package cc.dreamcode.template.command.handler;
+package cc.dreamcode.kits.command.handler;
 
 import cc.dreamcode.command.DreamSender;
 import cc.dreamcode.command.bukkit.BukkitSender;
 import cc.dreamcode.command.handler.InvalidInputHandler;
-import cc.dreamcode.template.config.MessageConfig;
+import cc.dreamcode.kits.config.MessageConfig;
 import cc.dreamcode.utilities.builder.MapBuilder;
 import eu.okaeri.injector.annotation.Inject;
 import lombok.NonNull;

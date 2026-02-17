@@ -10,7 +10,7 @@ idea {
 }
 
 allprojects {
-    group = "cc.dreamcode.template"
+    group = "cc.dreamcode.kits"
     version = "1.0-InDEV"
 
     apply(plugin = "java-library")
@@ -47,7 +47,7 @@ subprojects {
     }
 }
 
-project(":plugin-core:nms").subprojects {
+/*project(":plugin-core:nms").subprojects {
 
     val minor = name.split("_").getOrNull(1)?.toInt() ?: 0
     val patch = name.split("R").getOrNull(1)?.toInt() ?: 0
@@ -76,7 +76,7 @@ project(":plugin-core:nms").subprojects {
             withJavadocJar()
         }
     }
-}
+}*/
 
 tasks.register("pluginVersion") {
     println(project.version)

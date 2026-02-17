@@ -1,4 +1,4 @@
-package cc.dreamcode.template.nms.api;
+package cc.dreamcode.kits.nms.api;
 
 public interface VersionAccessor {
 

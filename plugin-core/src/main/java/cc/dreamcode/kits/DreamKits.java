@@ -1,6 +1,13 @@
-package cc.dreamcode.template;
+package cc.dreamcode.kits;
 
 import cc.dreamcode.command.bukkit.BukkitCommandProvider;
+import cc.dreamcode.kits.command.AkitCommand;
+import cc.dreamcode.kits.config.KitConfig;
+import cc.dreamcode.kits.listener.KitEditChatListener;
+import cc.dreamcode.kits.menu.KitMenuSetup;
+import cc.dreamcode.kits.menu.MenuConfig;
+import cc.dreamcode.kits.service.KitService;
+import cc.dreamcode.kits.suggestion.KitSuggestionSupplier;
 import cc.dreamcode.menu.bukkit.BukkitMenuProvider;
 import cc.dreamcode.menu.serializer.MenuBuilderSerializer;
 import cc.dreamcode.notice.serializer.BukkitNoticeSerializer;
@@ -14,16 +21,15 @@ import cc.dreamcode.platform.other.component.DreamCommandExtension;
 import cc.dreamcode.platform.persistence.DreamPersistence;
 import cc.dreamcode.platform.persistence.component.DocumentPersistenceResolver;
 import cc.dreamcode.platform.persistence.component.DocumentRepositoryResolver;
-import cc.dreamcode.template.command.ExampleCommand;
-import cc.dreamcode.template.command.handler.InvalidInputHandlerImpl;
-import cc.dreamcode.template.command.handler.InvalidPermissionHandlerImpl;
-import cc.dreamcode.template.command.handler.InvalidSenderHandlerImpl;
-import cc.dreamcode.template.command.handler.InvalidUsageHandlerImpl;
-import cc.dreamcode.template.command.result.BukkitNoticeResolver;
-import cc.dreamcode.template.config.MessageConfig;
-import cc.dreamcode.template.config.PluginConfig;
-import cc.dreamcode.template.nms.api.VersionProvider;
-import cc.dreamcode.template.profile.ProfileRepository;
+import cc.dreamcode.kits.command.KitCommand;
+import cc.dreamcode.kits.command.handler.InvalidInputHandlerImpl;
+import cc.dreamcode.kits.command.handler.InvalidPermissionHandlerImpl;
+import cc.dreamcode.kits.command.handler.InvalidSenderHandlerImpl;
+import cc.dreamcode.kits.command.handler.InvalidUsageHandlerImpl;
+import cc.dreamcode.kits.command.result.BukkitNoticeResolver;
+import cc.dreamcode.kits.config.MessageConfig;
+import cc.dreamcode.kits.config.PluginConfig;
+import cc.dreamcode.kits.profile.ProfileRepository;
 import cc.dreamcode.utilities.adventure.AdventureProcessor;
 import cc.dreamcode.utilities.adventure.AdventureUtil;
 import cc.dreamcode.utilities.bukkit.StringColorUtil;
@@ -41,9 +47,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.time.Instant;
 
-public final class TemplatePlugin extends DreamBukkitPlatform implements DreamBukkitConfig, DreamPersistence {
+public final class DreamKits extends DreamBukkitPlatform implements DreamBukkitConfig, DreamPersistence {
 
-    @Getter private static TemplatePlugin instance;
+    @Getter private static DreamKits instance;
 
     @Override
     public void load(@NonNull ComponentService componentService) {
@@ -63,7 +69,6 @@ public final class TemplatePlugin extends DreamBukkitPlatform implements DreamBu
         this.registerInjectable(BukkitCommandProvider.create(this));
         componentService.registerExtension(DreamCommandExtension.class);
 
-        this.registerInjectable(VersionProvider.getVersionAccessor());
 
         componentService.registerResolver(ConfigurationResolver.class);
         componentService.registerComponent(MessageConfig.class);
@@ -73,6 +78,9 @@ public final class TemplatePlugin extends DreamBukkitPlatform implements DreamBu
         componentService.registerComponent(InvalidPermissionHandlerImpl.class);
         componentService.registerComponent(InvalidSenderHandlerImpl.class);
         componentService.registerComponent(InvalidUsageHandlerImpl.class);
+
+        componentService.registerComponent(KitConfig.class);
+        componentService.registerComponent(MenuConfig.class);
 
         componentService.registerComponent(PluginConfig.class, pluginConfig -> {
             // register persistence + repositories
@@ -87,7 +95,18 @@ public final class TemplatePlugin extends DreamBukkitPlatform implements DreamBu
         });
 
         componentService.registerComponent(ProfileRepository.class);
-        componentService.registerComponent(ExampleCommand.class);
+
+        componentService.registerComponent(KitSuggestionSupplier.class);
+
+        componentService.registerComponent(KitService.class);
+
+        componentService.registerComponent(KitMenuSetup.class);
+
+        componentService.registerComponent(KitEditChatListener.class);
+
+        componentService.registerComponent(KitCommand.class);
+        componentService.registerComponent(AkitCommand.class);
+
     }
 
     @Override
